@@ -5,8 +5,7 @@ import moment from "moment";
 export const getPosts = (req, res) => {
   const token = req.cookies.accessToken;
   const userId = req.query.userId;
-  console.log("============");
-  console.log(req.cookies);
+
   if (!token) return res.status(401).json("Not logged in");
 
   jwt.verify(token, "secretkey", (err, userInfo) => {
