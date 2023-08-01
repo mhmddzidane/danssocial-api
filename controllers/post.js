@@ -7,11 +7,11 @@ export const getPosts = (req, res) => {
   const userId = req.query.userId;
   console.log("============");
   console.log(req.cookies);
-  // if (!token) return res.status(401).json("Not logged in");
+  if (!token) return res.status(401).json("Not logged in");
 
   jwt.verify(token, "secretkey", (err, userInfo) => {
     if (err) return res.status(403).json("Token not valid");
-
+    console.log(userInfo);
     const q =
       userId !== "undefined"
         ? `SELECT p.*, u.id AS userId, name,profilePic FROM posts AS p JOIN users AS u ON (u.id = p.user_id) WHERE p.user_id = ? ORDER BY p.created_at DESC`
