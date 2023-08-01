@@ -8,6 +8,7 @@ import authRoutes from "./routes/auth.js";
 import relationshipRoutes from "./routes/relationships.js";
 import cookieParser from "cookie-parser";
 import multer from "multer";
+import "./loadEnv.js";
 
 const app = express();
 
